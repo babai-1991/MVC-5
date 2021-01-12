@@ -69,6 +69,33 @@ namespace MyFirstApp.Controllers
             //Send the File to Download.
             return File(bytes, "application/octet-stream", filename);
         }
+
+        public ActionResult SearchTag(string query)
+        {
+            string url = $"https://stackoverflow.com/questions/tagged/{query}";
+            return Redirect(url);
+        }
+
+        public ActionResult Validate(string user,string password)
+        {
+            if (user=="admin" &&password == "abcd")
+            {
+                return RedirectToAction("AdminPanel", "Home");
+            }
+            //notice how I pass data as route
+            return RedirectToAction("MemberPanel", "Home",new {user=user});
+            
+        }
+
+        public ActionResult AdminPanel()
+        {
+            return Content("Welcome Admin");
+        }
+
+        public ActionResult MemberPanel(string user)
+        {
+            return Content($"Welcome {user}");
+        }
     }
 }
 
