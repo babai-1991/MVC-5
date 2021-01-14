@@ -1,4 +1,4 @@
-﻿
+﻿@model ModelExample.Models.Product
 
 @{
     ViewBag.Title = "Details";
@@ -16,10 +16,11 @@
     </thead>
     <tbody>
         <tr>
-            <td>@ViewBag.Product.ProductId</td>
-            <td>@ViewBag.Product.ProductName</td>
-            <td>@ViewBag.Product.Rate</td>
-
+            <td>
+                @Model.ProductId
+            </td>
+            <td>@Model.ProductName</td>
+            <td>@Model.Rate</td>
         </tr>
         <a href="/products/index">Back To List</a>
     </tbody>

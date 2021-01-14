@@ -21,14 +21,14 @@ namespace ModelExample.Controllers
         }
         public ActionResult Index()
         {
-            ViewBag.products = GetProducts();
-            return View();
+            List<Product> products = GetProducts();
+            return View(products);
         }
 
         public ActionResult Details(int id)
         {
-            ViewBag.product = GetProducts().FirstOrDefault(pr=>pr.ProductId==id);
-            return View();
+            Product product = GetProducts().FirstOrDefault(pr=>pr.ProductId==id);
+            return View(product);
         }
     }
 }
