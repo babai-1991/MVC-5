@@ -9,7 +9,7 @@ namespace ModelExample.Controllers
 {
     public class ProductsController : Controller
     {
-        public ActionResult Index()
+        public List<Product> GetProducts()
         {
             List<Product> products = new List<Product>()
             {
@@ -17,7 +17,17 @@ namespace ModelExample.Controllers
                 new Product() { ProductId = 102, ProductName = "Mobile", Rate = 38000 },
                 new Product() { ProductId = 103, ProductName = "Bike", Rate = 94000 }
             };
-            ViewBag.products = products;
+            return products;
+        }
+        public ActionResult Index()
+        {
+            ViewBag.products = GetProducts();
+            return View();
+        }
+
+        public ActionResult Details(int id)
+        {
+            ViewBag.product = GetProducts().FirstOrDefault(pr=>pr.ProductId==id);
             return View();
         }
     }
