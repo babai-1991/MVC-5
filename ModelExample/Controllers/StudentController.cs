@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using ModelExample.Models;
+
+namespace ModelExample.Controllers
+{
+    public class StudentController : Controller
+    {
+        // GET: Student
+        public ActionResult Index()
+        {
+            return RedirectToAction("Create", "Student");
+        }
+
+        //GET
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create([ModelBinder(typeof(CustomBinder))]Student student)
+        {
+            return View();
+        }
+    }
+}

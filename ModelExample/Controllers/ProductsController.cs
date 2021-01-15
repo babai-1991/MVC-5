@@ -30,6 +30,17 @@ namespace ModelExample.Controllers
             Product product = GetProducts().FirstOrDefault(pr=>pr.ProductId==id);
             return View(product);
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create([Bind(Include = "ProductId,ProductName")]Product product)
+        {
+            return View();
+        }
     }
 }
 
